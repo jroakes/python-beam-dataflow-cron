@@ -14,7 +14,10 @@ import time
 import re
 
 # Change this to match your config file.  See config_template.py for template.
-import config
+try:
+    import config
+except:
+    import dataflow_pipeline.config as config
 
 logging.getLogger().setLevel(logging.INFO)
 
