@@ -3,12 +3,13 @@ from flask import Flask, request
 import logging
 import dataflow_pipeline.dataflow as pipeline
 
-app = Flask(__name__)
+#app = Flask(__name__)
 
 
-@app.route("/start-dataflow")
+#@app.route("/start-dataflow")
 def start_dataflow():
-    is_cron = request.headers.get('X-Appengine-Cron', False)
+    #is_cron = request.headers.get('X-Appengine-Cron', False)
+    is_cron = True
     if not is_cron:
         return 'Bad Request', 400
 
@@ -20,7 +21,7 @@ def start_dataflow():
         return "Error: <pre>{}</pre>".format(e), 500
 
 
-@app.errorhandler(500)
+#@app.errorhandler(500)
 def server_error(e):
     logging.exception('An error occurred during a request.')
     return """
@@ -30,4 +31,5 @@ def server_error(e):
 
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=8080, debug=True)
+    print(start_dataflow())
+    #app.run(host='127.0.0.1', port=8080, debug=True)

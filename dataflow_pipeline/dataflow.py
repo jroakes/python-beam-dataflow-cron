@@ -376,20 +376,23 @@ def run(argv=None):
 
 
 
-    with beam.Pipeline(options=options) as pipeline:
-        # Read projects from Stat API
-        api = (
-            pipeline
-            | 'create' >> beam.Create(StatAPI(data=args).get_job())
-            | 'IterProjects'  >> beam.ParDo(IterProjects(data=args))
-        )
+    pipeline = beam.Pipeline(options=options)
 
-        # Iteates Sites in Projects
-        keywords = (
-            api
-            | 'IterSites' >> beam.ParDo(IterSites())
-            | 'IterKeywords' >> beam.ParDo(IterKeywords())
-        )
+    # Read projects from Stat API
+    api = (
+        pipeline
+        | 'create' >> beam.Create(StatAPI(data=args).get_job())
+        | 'IterProjects'  >> beam.ParDo(IterProjects(data=args))
+    )
 
-        # Write to bigquery based on specified schema
-        BQ = (keywords | "WriteToBigQuery" >> WriteToBigQuery(args.table_name, args.dataset, STAT_API_SCHEMA))
+    # Iteates Sites in Projects
+    keywords = (
+        api
+        | 'IterSites' >> beam.ParDo(IterSites())
+        | 'IterKeywords' >> beam.ParDo(IterKeywords())
+    )
+
+    # Write to bigquery based on specified schema
+    BQ = (keywords | "WriteToBigQuery" >> WriteToBigQuery(args.table_name, args.dataset, STAT_API_SCHEMA))
+
+    pipeline.run()
