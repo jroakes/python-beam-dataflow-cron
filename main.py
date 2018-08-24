@@ -1,7 +1,7 @@
 from __future__ import print_function, absolute_import
 from flask import Flask, request
 import logging
-import dataflow_pipeline.wordcountpipeline as pipeline
+import dataflow_pipeline.dataflow as pipeline
 
 app = Flask(__name__)
 
