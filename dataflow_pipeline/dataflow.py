@@ -15,7 +15,7 @@ import time
 import re
 
 # Change this to match your config file.  See config.py for template.
-import config_adapt as config
+import config_template as config
 
 logging.getLogger().setLevel(logging.INFO)
 
