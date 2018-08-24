@@ -399,3 +399,7 @@ def run(argv=None):
     BQ = (keywords | "WriteToBigQuery" >> WriteToBigQuery(args.table_name, args.dataset, STAT_API_SCHEMA))
 
     pipeline.run()
+
+
+if __name__ == '__main__':
+    run()
