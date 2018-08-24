@@ -1,7 +1,7 @@
 from __future__ import print_function, absolute_import
 from flask import Flask, request
 import logging
-import dataflow_pipeline.dataflow as pipeline
+from dataflow_pipeline import dfpipeline
 
 app = Flask(__name__)
 
@@ -13,7 +13,7 @@ def start_dataflow():
         return 'Bad Request', 400
 
     try:
-        pipeline.run()
+        dfpipeline.run()
         return "Pipeline started", 200
     except Exception as e:
         logging.exception(e)
@@ -31,3 +31,4 @@ def server_error(e):
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
+    # DEBUG: start_dataflow()

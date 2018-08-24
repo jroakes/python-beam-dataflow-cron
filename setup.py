@@ -65,7 +65,7 @@ class CustomCommands(setuptools.Command):
       self.RunCustomCommand(command)
 
 
-REQUIRED_PACKAGES = []
+REQUIRED_PACKAGES = ['requests']
 
 
 setuptools.setup(
@@ -73,7 +73,7 @@ setuptools.setup(
     version='1.0.0',
     description='DataFlow Python Pipeline',
     install_requires=REQUIRED_PACKAGES,
-    packages=setuptools.find_packages(),
+    packages=setuptools.find_packages(include=['dataflow_pipeline']),
     cmdclass={
         'build': build,
         'CustomCommands': CustomCommands,

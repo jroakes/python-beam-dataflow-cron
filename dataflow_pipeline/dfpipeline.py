@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 from __future__ import print_function, absolute_import
 import argparse
 import logging
@@ -7,15 +6,15 @@ import sys
 import apache_beam as beam
 from apache_beam.io.gcp.internal.clients import bigquery
 from apache_beam.metrics.metric import Metrics
-from apache_beam.options.pipeline_options import PipelineOptions, GoogleCloudOptions, StandardOptions
+from apache_beam.options.pipeline_options import PipelineOptions, GoogleCloudOptions, StandardOptions, SetupOptions
 
 import datetime as dt
 from datetime import timedelta, date
 import time
 import re
 
-# Change this to match your config file.  See config.py for template.
-import config_template as config
+# Change this to match your config file.  See config_template.py for template.
+import config
 
 logging.getLogger().setLevel(logging.INFO)
 
@@ -373,6 +372,7 @@ def run(argv=None):
     google_cloud_options.staging_location = "gs://{0}/binaries".format(args.project)
     google_cloud_options.temp_location = "gs://{0}/temp".format(args.project)
     options.view_as(StandardOptions).runner = args.runner
+    options.view_as(SetupOptions).setup_file = "./setup.py"
 
 
 
