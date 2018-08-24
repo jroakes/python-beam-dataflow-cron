@@ -23,9 +23,9 @@ This repository contains a project for logging Stat API data to BigQuery. It can
 1. To deploy App Engine CRON, run: ```gcloud app deploy cron.yaml```
 
 ## Config Options
-* **SUBDOMAIN**: The subdomain of your getstat.com URL. (eg. )[subdomain].getstat.com)
-* **API_KEY**: Your API key from Stat
-* **PRIOR_DAYS**: The number od days in the rears to pull Stat ranking data.  Default is `3`. {type: Integer}
-* **DATASET**: The name of your BigQuery database.  Should already exist.
-* **TABLE_NAME**: The name of the table in your BigQuery database.  Should not exist.
-* **PROJECT**: Your GCS project id.
+* **SUBDOMAIN**: The subdomain of your getstat.com URL. (eg. [subdomain].getstat.com) {type: String}
+* **API_KEY**: Your API key from Stat. {type: String}
+* **PRIOR_DAYS**: The number of days in the rears to pull Stat ranking data.  Default is `3`. {type: Integer}
+* **DATASET**: The name of your BigQuery database.  Should already exist. {type: String}
+* **TABLE_NAME**: The name of the table in your BigQuery database.  Should not exist. {type: String}
+* **PROJECT**: Your GCS project id. {type: String}
