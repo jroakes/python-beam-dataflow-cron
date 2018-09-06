@@ -49,7 +49,7 @@ STAT_API_SCHEMA = [
         'mode' : 'NULLABLE'
     },
     {
-        'name' : 'KeywordCategories',
+        'name' : 'KeywordTags',
         'type' : 'STRING',
         'mode' : 'NULLABLE'
     },
@@ -375,6 +375,8 @@ def run(argv=None):
     google_cloud_options.staging_location = "gs://{0}/binaries".format(args.project)
     google_cloud_options.temp_location = "gs://{0}/temp".format(args.project)
     options.view_as(StandardOptions).runner = args.runner
+
+    ## Comment this if wanting to run this file directly.
     options.view_as(SetupOptions).setup_file = "./setup.py"
 
 
