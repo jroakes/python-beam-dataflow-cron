@@ -49,6 +49,11 @@ STAT_API_SCHEMA = [
         'mode' : 'NULLABLE'
     },
     {
+        'name' : 'KeywordCategories',
+        'type' : 'STRING',
+        'mode' : 'NULLABLE'
+    },
+    {
         'name' : 'KeywordTags',
         'type' : 'STRING',
         'mode' : 'NULLABLE'
